@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'events',
 ]
 
 MIDDLEWARE = [
@@ -75,17 +77,10 @@ WSGI_APPLICATION = 'EventAnalyticsPlatform.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'clickhouse_backend.backend',
-        'NAME': 'data',
-        'HOST': 'localhost',
-        'USER': 'DB_USER',
-        'PASSWORD': 'DB_PASSWORD',
-        'TEST': {
-            'fake_transaction': True
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Password validation
