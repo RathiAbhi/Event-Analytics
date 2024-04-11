@@ -1,0 +1,1 @@
+Just a basic rest api using python django
